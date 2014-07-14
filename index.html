@@ -1,0 +1,141 @@
+<html lang="en" data-ng-app="documents4j">
+<head>
+    <title>documents4j - A document format converter for Java</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    <!--<link rel="icon" type="image/png" href="images/favicon.png"/>-->
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/prettify-tomorrow-theme.css"/>
+    <link rel="stylesheet" href="css/custom.css"/>
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Bevan"/>
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+<body style="overflow-x:hidden;">
+
+<dl class="preview-text">
+    <dt>documents4j</dt>
+    <dd>
+        documents4j is a Java library for converting documents into another document format. This is achieved by
+        delegating the conversion to any native application which understands the conversion of the given file into the
+        desired target format. documents4j comes with adaptations for MS Word and MS Excel for Windows what allows for
+        example for the conversion of a docx file into a pdf file without the usual distortions in the resulting
+        document which are often observed for conversions that were conducted using non-Microsoft products.
+    </dd>
+</dl>
+
+<header class="navbar navbar-default navbar-fixed-top" role="Banner" data-ng-controller="menuController">
+    <div class="container">
+        <div class="navbar-header">
+            <button class="navbar-toggle" type="button" data-ng-click="toggleCollapse()">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="#/" class="navbar-brand">
+                <img src="images/logo-text.png" width="132px" alt="logo text"/>
+            </a>
+        </div>
+        <nav class="collapse navbar-collapse" role="navigation" data-collapse="isCollapsed()">
+            <ul class="nav navbar-nav">
+                <li data-ng-repeat="item in menuItems"
+                    data-ng-class="activeClass(item)">
+                    <a data-ng-href="{{item.target}}"
+                       data-ng-click="collapse()"
+                       href="#">{{item.name}}</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<div class="container" style="margin: 10px 0;">
+    <div data-ng-view="" scroll="true"></div>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="row footer-row">
+            <div class="col-md-6 col-md-offset-4">
+                <h2 id="support">Need for support?</h2>
+                <dl>
+                    <dt>Questions</dt>
+                    <dd>
+                        Feel free to ask questions about documents4j on <a href="http://www.stackoverflow.com">Stack
+                        Overflow</a> and tag them with <code class="so-tag">documents4j</code>. We are monitoring
+                        questions with this tag and will normally answer as quickly as possible. We think that
+                        Stack Overflow is a great place to share knowledge which is why we decided to not maintain
+                        our own support platform. If you have a question that does not fit into Stack Overflow's Q&amp;A
+                        format, please ask your question on our
+                        <a href="https://groups.google.com/forum/#!forum/documents4j">mailing list</a> instead.
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>Bugs and feature requests</dt>
+                    <dd>
+                        You can register any bug or misbehavior in documents4j's
+                        <a href="https://github.com/documents4j/documents4j/issues">issue tracker</a>. If possible,
+                        please provide a code sample that reproduces the bug. Furthermore, you should include
+                        information on the Java version that you were using. If you have a suggestion for a new feature,
+                        you can also use the <a href="https://github.com/raphw/documents4j/documents4j">issue
+                        tracker</a>. If you want to discuss this feature first, start such a discussion
+                        <a href="https://groups.google.com/forum/#!forum/documents4j">on out mailing list</a>.
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>Development</dt>
+                    <dd>
+                        If you have fixed a bug or developed a feature for documents4j that you want to share, simply
+                        create a <a href="https://github.com/raphw/documents4j/pulls">pull request</a> for it. If you
+                        are planning to implement an extensive feature for documents4j, <a
+                            href="https://groups.google.com/forum/#!forum/byte-buddy">please get in touch before
+                        starting its development</a>. This way, we can coordinate the development process. You can
+                        find more information on our <a href="#/develop">development page</a>. Thank you for improving
+                        documents4j!
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>Discover</dt>
+                    <dd>
+                        documents4j was originally a project for the <a href="http://www.oslo.kommune.no/">city
+                        municipality of Oslo</a> and was developed by <a href="http://www.kantega.no">Kantega AS</a>. It
+                        was later open-sourced and is now maintained by <a href="http://rafael.codes">Rafael
+                        Winterhalter</a>. It was first published in 2013. Thank you for spreading the word!<br/>
+
+                        <div class="btn-group" data-ng-controller="socialMediaController" style="padding-top: 7px;">
+                            <a data-ng-repeat="icon in icons" data-ng-href="{{icon.target}}" class="social-link">
+                                <i class="media-object social-icon {{icon.style}}"></i>
+                            </a>
+                        </div>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>Thank-you note</dt>
+                    <dd>
+                        I want to thank the <a href="http://www.oslo.kommune.no/">city municipality of Oslo</a> and <a
+                            href="http://www.kantega.no">Kantega AS</a> for their support of open-sourcing this project.
+                        I further want to thank Dean who created the logo for documents4j.
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>Legal</dt>
+                    <dd>
+                        2014 &copy; Rafael Winterhalter, Kantega AS, Kirkegata 5, 0153 Oslo, Norway
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="http://code.angularjs.org/1.2.9/angular.min.js"></script>
+<script src="http://code.angularjs.org/1.2.9/angular-route.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/prettify/r224/prettify.js"></script>
+<script src="js/ui-bootstrap-tpls-0.10.0.min.js"></script>
+<script src="js/angular-scroll.min.js"></script>
+<script src="js/app.js"></script>
+
+</body>
+</html>

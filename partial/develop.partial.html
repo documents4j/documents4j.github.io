@@ -1,0 +1,100 @@
+<a href="https://github.com/documents4j/documents4j">
+    <img style="position: absolute; top: 0; left: 0; border: 0; z-index: 9999;"
+         src="https://camo.githubusercontent.com/8b6b8ccc6da3aa5722903da7b58eb5ab1081adee/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6f72616e67655f6666373630302e706e67"
+         alt="Fork me on GitHub"
+         data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_orange_ff7600.png">
+</a>
+
+<div class="row col-md-offset-3 col-md-8">
+    <h2>Getting started</h2>
+
+    <p>
+        First, you need to create a copy of documents4j on your local machine. Simply clone documents4j's repository
+        by using <a href="http://git-scm.com/">git</a> or by cloning it directly on
+        <a href="http://www.github.com">GitHub</a>. Once the repository is cloned, you can build the project using
+        <a href="http://maven.apache.org/">Maven</a>. From your shell, this might look something like this:
+    </p>
+
+<pre class="prettyprint">
+git clone https://github.com/documents4j/documents4j.git
+cd documents4j
+mvn package
+</pre>
+
+    <p>
+        Before you start to code, make sure that all test cases run successfully. This should be the case at all times
+        for the <a href="https://github.com/documents4j/documents4j/tree/master"><code>master</code></a> branch of
+        documents4j. This is hopefully confirmed by our current <a href="https://travis-ci.org/">Travis</a> build which
+        currently is <a href="https://travis-ci.org/raphw/byte-buddy" class="social-link">
+        <img style="max-width:100%;"
+             data-canonical-src="https://travis-ci.org/documents4j/documents4j.png"
+             alt="Byte Buddy build status"
+             src="https://travis-ci.org/documents4j/documents4j.svg?branch=master">
+    </a>
+        and which is constantly monitoring documents4j's latest state. Travis is configured to compile and test the
+        project for the <a href="http://openjdk.java.net/">Open JDK</a> versions 6.
+    </p>
+
+    <p>
+        This project is set up to allow running as many tests as possible without requiring MS Office or
+        even MS Windows installed. For this purpose, the project includes several rich stubs that step in place of the
+        MS Office bridges. When you are building this project on a machine with MS Windows and MS Office installed, you
+        should build the project with the ms-office profile which triggers tests that rely on an actual MS Office
+        instance. You can then build the project using Maven:
+    </p>
+
+<pre class="prettyprint">
+mvn clean package -Pms-office
+</pre>
+
+    <p>
+        When you are testing native converters such as the <code>MicrosoftWordBridge</code> or the
+        <code>MicrosoftExcelBridge</code>, do not forget to keep an eye on your task manager. Consider an alternative to
+        the default task manager such as <a href="http://technet.microsoft.com/en-us/sysinternals/bb896653.aspx">Process
+        Explorer</a> for debugging purposes. For monitoring network connections, we recommend <a
+            href="http://technet.microsoft.com/de-de/sysinternals/bb897437.aspx">TCPView</a>.
+    </p>
+
+    <p>
+        Note that Travis does not run any tests that relate to MS Office because the Travis build is run on a Linux
+        machine without the necessary installation of MS Office.
+    </p>
+
+    <p>
+        Several time consuming operations such as building source code and javadoc artifacts as well as building the
+        shaded jar for the standalone server are only executed when the <code>extras</code> profile is active.
+    </p>
+
+    <h2>Contribute</h2>
+
+    <p>
+        When you have fixed a bug, simply create a <a href="https://github.com/documents4j/documents4j/pulls">pull
+        request</a> on GitHub. We will look into the matter as quickly as possible, once we receive the notification.
+        Make however sure that you have accurately described your changes and the fixed issue and please provide a test
+        case that reproduces the problem and proves that your fix is working. This makes our work much easier and we
+        will be able to apply your patch much quicker. Please consider adding in-code documentation to your code.
+    </p>
+
+    <p>
+        If you are contributing a feature, please <a href="https://groups.google.com/forum/#!forum/documents4j">get in
+        touch</a> before spending a lot of time with it such that we can discuss how your changes are meaningful at
+        documents4j's current development state. documents4j is meant to steadily provide more functionality but we do
+        not grow its feature set on the expense of its stability and code consistency. However, do not be discouraged
+        by this announcement. If you got deep enough into documents4j's source to being able to implement a new awesome
+        feature that you want to share, you did for sure give it some thought and we will do our best to merge it into
+        our build! Simply come talk to us and we are more than happy to welcome you on board.
+    </p>
+
+    <p>
+        If you feel like contributing to documents4j's documentation, to its description on this web page or even to the
+        structure and design of this web page, you are absolutely welcome to do so! We deeply believe that a thorough
+        and up-to-date documentation is the key to a successful project and we will do our best to live up to this
+        conviction. Even minor changes are welcome as long as they improve documents4j's accessibility or appearance,
+        because in the end, this project was made for its users. Simply clone this web page which is hosted on GitHub
+        in the project's <a href="https://github.com/documents4j/webpage"><code>webpage</code></a> repository.
+        The web page was created using <a href="http://angularjs.org/">angular.js</a> and
+        <a href="http://getbootstrap.com/">Twitter's Bootstrap</a>.
+    </p>
+
+    <p></p>
+</div>
