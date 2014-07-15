@@ -37,28 +37,28 @@ html {
 
 footer {
     z-index: 100;
-    background: rgb(255, 153, 0); /* Old browsers */
+    background: rgb(123, 21, 120); /* Old browsers */
     /* IE9 SVG, needs conditional override of 'filter' to 'none' */
     background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmOTkwMCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNmZmE0MDgiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
-    background: -moz-linear-gradient(left, rgba(255, 153, 0, 1) 0%, rgba(255, 164, 8, 1) 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, right top, color-stop(0%, rgba(255, 153, 0, 1)), color-stop(100%, rgba(255, 164, 8, 1))); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(left, rgba(255, 153, 0, 1) 0%, rgba(255, 164, 8, 1) 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(left, rgba(255, 153, 0, 1) 0%, rgba(255, 164, 8, 1) 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(left, rgba(255, 153, 0, 1) 0%, rgba(255, 164, 8, 1) 100%); /* IE10+ */
-    background: linear-gradient(to right, rgba(255, 153, 0, 1) 0%, rgba(255, 164, 8, 1) 100%); /* W3C */
+    background: -moz-linear-gradient(left, rgba(123, 21, 120, 1) 0%, rgba(123, 32, 128, 1) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%, rgba(123, 21, 120, 1)), color-stop(100%, rgba(123, 32, 128, 1))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(left, rgba(123, 21, 120, 1) 0%, rgba(123, 32, 128, 1) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(left, rgba(123, 21, 120, 1) 0%, rgba(123, 32, 128, 1) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(left, rgba(123, 21, 120, 1) 0%, rgba(123, 32, 128, 1) 100%); /* IE10+ */
+    background: linear-gradient(to right, rgba(123, 21, 120, 1) 0%, rgba(123, 32, 128, 1) 100%); /* W3C */
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff9900', endColorstr='#ffa408', GradientType=1); /* IE6-8 */
-    border-top: 10px solid #FFA408;
+    border-top: 10px solid rgb(123, 21, 120);
 }
 
 .footer-row h2 {
-    color: #D13838;
-    border-color: #D13838;
+    color: rgb(145, 164, 55);
+    border-color: rgb(145, 164, 55);
     padding-top: 30px;
     margin-bottom: 1em;
 }
 
 .footer-row dt {
-    color: #D13838;
+    color: rgb(145, 164, 55);
 }
 
 h1, h2, h3 {
@@ -93,7 +93,7 @@ h3 {
  */
 
 dt {
-    color: #D13838;
+    color: rgb(145, 164, 55);
 }
 
 ul.padded > li {
@@ -117,7 +117,7 @@ ul.colored-list {
 }
 
 ul.colored-list > li {
-    color: rgba(255, 153, 0, 1);
+    color: rgba(123, 21, 120, 1);
 }
 
 ul.colored-list > li > span {
@@ -155,11 +155,11 @@ body {
 
 .navbar-default {
     background: none repeat scroll 0 0 white;
-    border-top: 3px solid #FFA408;
+    border-top: 3px solid rgb(123, 21, 120);
 }
 
 .navbar-default .navbar-nav li.active a {
-    background-color: #FFA408;
+    background-color: rgb(123, 21, 120);
     color: #FFFFFF;
 }
 
@@ -190,7 +190,7 @@ body {
 
 .nav > li > a.active {
     padding-right: 15px;
-    border-right: 3px solid rgba(255, 153, 0, 1);
+    border-right: 3px solid rgba(123, 21, 120, 1);
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
     border-radius: 0;
@@ -218,7 +218,7 @@ p {
 }
 
 h1 {
-    color: #FFA408;
+    color: rgb(123, 21, 120);
 }
 
 h2 {
@@ -239,8 +239,8 @@ code {
 }
 
 .so-tag {
-    background-color: #D13838;
-    color: #FFA408;
+    background-color: rgb(145, 164, 55);
+    color: rgb(123, 21, 120);
 }
 
 /*
@@ -264,7 +264,7 @@ table.table-section-border thead {
 }
 
 table.table-section-border, table.table-section-border thead tr {
-    border-bottom: 2px double #FFA408;
+    border-bottom: 2px double rgb(123, 21, 120);
 }
 
 table.table-section-border tr.table-auxiliary {
@@ -277,7 +277,7 @@ table.table-section-border tr.table-auxiliary td {
 }
 
 table.table-section-border tr.table-section {
-    border-top: 1px dashed #FFA408;
+    border-top: 1px dashed rgb(123, 21, 120);
 }
 
 /*
@@ -333,7 +333,7 @@ table.table-section-border tr.table-section {
 
 pre, pre.prettyprint {
     background: #F5F5F5;
-    border: 1px solid #FFA408;
+    border: 1px solid rgb(123, 21, 120);
     padding: 5px 10px;
     margin-bottom: 20px;
 }
@@ -352,7 +352,7 @@ li.L1, li.L3, li.L5, li.L7, li.L9 {
 }
 
 .pln-as-lit .pln {
-    color: #F5871F !important;
+    color: rgb(123, 21, 120) !important;
 }
 
 /*
@@ -373,7 +373,7 @@ li.L1, li.L3, li.L5, li.L7, li.L9 {
     color: black;
     cursor: default;
     border: 0;
-    background-color: #F5871F;
+    background-color: rgb(123, 21, 120);
 }
 
 /*
@@ -427,4 +427,20 @@ body {
 .navbar-bright {
     background-color: #111155;
     color: #fff;
+}
+
+.footer-colors {
+    color: white;
+}
+
+.footer-colors a {
+    color: rgb(145, 164, 55);
+}
+
+blockquote {
+    border-left: 8px solid rgb(123, 21, 120);
+}
+
+.navbar-brand {
+    font-family: 'Alegreya Sans', cursive;
 }
