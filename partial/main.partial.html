@@ -503,8 +503,59 @@ java -jar documents4j-client-standalone-shaded.jar http://localhost:9998
 
 <p>
     documents4j releases are available from the <a href="http://search.maven.org/">Maven Central</a> and
-    <a href="https://bintray.com/bintray/jcenter">JCenter</a> repositories.
+    <a href="https://bintray.com/bintray/jcenter">JCenter</a> repositories. You might require a dependencies on the
+    following Maven modules:
 </p>
+
+<dl>
+    <dt>documents4j-api</dt>
+    <dd>
+        The API module merely contains the documents4j API. This dependency is required for code that uses
+        documents4j by some <code>IConverter</code> without relying on a specific implementation.
+    </dd>
+    <dt>documents4j-local</dt>
+    <dd>
+        This module contains the implementation of the <code>LocalConverter</code> which runs on the same
+        physical machine.
+    </dd>
+    <dt>documents4j-transformer-msoffice-word</dt>
+    <dd>
+        This module contains the converter back-end for using MS Word. The backend should not be used directly but
+        by an <code>IConverter</code> implementation such as <i>documents4j-local</i>. The MS Word converter is
+        detected automatically when it is found on the class path.
+    </dd>
+    <dt>documents4j-transformer-msoffice-excel</dt>
+    <dd>
+        This module contains the converter back-end for using MS Excel. The backend should not be used directly but
+        by an <code>IConverter</code> implementation such as <i>documents4j-local</i>. The MS Excel converter is
+        detected automatically when it is found on the class path.
+    </dd>
+    <dt>documents4j-client</dt>
+    <dd>
+        This module contains the implementation of the <code>RemoteConverter</code> which communicates with a server
+        that offers document conversion as a REST service.
+    </dd>
+    <dt>documents4j-server</dt>
+    <dd>
+        This module contains the implementation of the REST service that is required by for example
+        the <i>documents4j-client</i> module. A server is created by a <code>ConversionServerBuilder</code>.
+    </dd>
+    <dt>documents4j-client-standalone</dt>
+    <dd>
+        This module contains a standalone implementation of a <code>RemoteConverter</code> which can be run from the
+        command line. You can download a shaded jar without any dependencies of this standalone client from
+        <a href="https://bintray.com/raphw/maven/documents4j/_latestVersion">the Bintray page of documents4j</a>.
+    </dd>
+    <dt>documents4j-server-standalone</dt>
+    <dd>
+        This module contains a standalone implementation of a conversion server which can be run from the
+        command line. You can download a shaded jar without any dependencies of this standalone client from
+        <a href="https://bintray.com/raphw/maven/documents4j/_latestVersion">the Bintray page of documents4j</a>.
+        The standalone server defines dependencies on <code>documents4j-transformer-msoffice-word</code> and
+        <code>documents4j-transformer-msoffice-excel</code> such that these converter back-ends must be
+        deactivated explicitly when they are not required.
+    </dd>
+</dl>
 
 </div>
 </div>
