@@ -68,33 +68,6 @@ angular.module('documents4j', ['ngRoute', 'ui.bootstrap', 'duScroll'])
 
     .controller('mainController', function ($scope, repository) {
         $scope.version = repository.version;
-        $scope.tabs = [
-            { title: 'Maven', content: '<dependency>\n  <groupId>'
-                + repository.groupId + '</groupId>\n  <artifactId>'
-                + repository.artifactId + '</artifactId>\n  <version>'
-                + repository.version + '</version>\n</dependency>' },
-            { title: 'Gradle', content: repository.groupId + ':'
-                + repository.artifactId + ':'
-                + repository.version },
-            { title: 'SBT', content: 'libraryDependencies += "'
-                + repository.groupId + '" % "'
-                + repository.artifactId + '" % "'
-                + repository.version + '"' },
-            { title: 'Ivy', content: '<dependency org="'
-                + repository.groupId + '" name="'
-                + repository.artifactId + '" rev="'
-                + repository.version + '" />' },
-            { title: 'Buildr', content: '\'' + repository.groupId + ':'
-                + repository.artifactId + ':jar:'
-                + repository.version + '\'' },
-            { title: 'Grape', content: '@Grapes(\n  @Grab(group=\''
-                + repository.groupId + '\', module=\''
-                + repository.artifactId + '\', version=\''
-                + repository.version + '\')\n)' },
-            { title: 'Leiningen', content: '[' + repository.groupId + '/' 
-                + repository.artifactId + ' "' 
-                + repository.version + '"]' }
-        ];
     })
 
     .controller('developController', function ($scope) {
