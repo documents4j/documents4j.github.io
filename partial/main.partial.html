@@ -1,5 +1,4 @@
-<div class="row">
-<div class="col-md-9 col-md-offset-3">
+<div class="row col-md-9 col-md-offset-3">
 
 <img width="230" alt="documents4j logo" src="images/logo-bg.png"
      style="display: block; margin-left: auto; margin-right: auto; margin-top: 30px;"/>
@@ -16,7 +15,7 @@
     documents4j offers a simple API and two implementations of this API:
 </p>
 
-<dl>
+<dl class="dl-horizontal padded">
     <dt>Local</dt>
     <dd>
         The local API implementation delegates a document conversion to an application on the same machine
@@ -329,34 +328,34 @@ java -jar documents4j-client-standalone-shaded.jar http://localhost:9998
     error could be identified. More specific exceptions are:
 </p>
 
-<dl>
-    <dt><code>ConversionFormatException</code></dt>
-    <dd>
+<ul>
+    <li>
+        <code>ConversionFormatException</code>:
         The converter was requested to translate a file into a <code>DocumentType</code> that is does not support.
-    </dd>
-    <dt><code>ConversionInputException</code></dt>
-    <dd>
+    </li>
+    <li>
+        <code>ConversionInputException</code>:
         The source file that was provided for a conversion could not be read in the given source file format. This means
         that the input data either represents another file format or the input data is corrupt and cannot be read by the
         responsible converter.
-    </dd>
-    <dt><code>FileSystemInteractionException</code></dt>
-    <dd>
+    </li>
+    <li>
+        <code>FileSystemInteractionException</code>
         The source file does not exist or is locked by the JVM or another application. (<i>Note</i>: You must <b>not</b>
         lock files in the JVM when using a <code>LocalConverter</code> since they might need to be processed by another
         software which is then prevented to do so.) This exception is also thrown when the target file is locked.
         Unlocked, existing files are simply overwritten when a conversion is triggered. Finally, the exception is also
         thrown when using a file stream causes an <code>IOException</code> where the IO exception is wrapped before it
         is rethrown.
-    </dd>
-    <dt><code>ConverterAccessException</code></dt>
-    <dd>
+    </li>
+    <li>
+        <code>ConverterAccessException</code>:
         This exception is thrown when a <code>IConverter</code> instance is in invalid state. This occurs when an <code>IConverter</code>
         was either shut down or the conditions for using a converter are not met, either because a remote converter
         cannot longer connect to its conversion server or because a backing conversion software is inaccessible. This
         exception can also occur when creating a <code>LocalConverter</code> or a <code>RemoteConverter</code>.
-    </dd>
-</dl>
+    </li>
+</ul>
 
 <p>
     <b>Note</b>: Be aware that <code>IConverter</code> implementations do not follow a prevalence of exceptions. When a
@@ -374,7 +373,7 @@ java -jar documents4j-client-standalone-shaded.jar http://localhost:9998
     different logging levels will determine the following events to be logged:
 </p>
 
-<dl>
+<dl  class="dl-horizontal padded">
     <dt>trace</dt>
     <dd>
         On this level, all concurrent code will log the acquisition and release of monitors.
@@ -507,7 +506,7 @@ java -jar documents4j-client-standalone-shaded.jar http://localhost:9998
     following Maven modules:
 </p>
 
-<dl>
+<dl class="dl-horizontal padded">
     <dt>documents4j-api</dt>
     <dd>
         The API module merely contains the documents4j API. This dependency is required for code that uses
@@ -557,5 +556,4 @@ java -jar documents4j-client-standalone-shaded.jar http://localhost:9998
     </dd>
 </dl>
 
-</div>
 </div>

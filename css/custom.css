@@ -444,3 +444,7 @@ blockquote {
 .navbar-brand {
     font-family: 'Alegreya Sans', cursive;
 }
+
+dl.dl-horizontal dt {
+    white-space: normal;
+}
