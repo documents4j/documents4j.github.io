@@ -310,6 +310,68 @@ java -jar documents4j-client-standalone-shaded.jar http://localhost:9998
     Again, the <code>-?</code> option can be supplied for obtaining a list of options.
 </p>
 
+<h4>Encryption</h4>
+
+<p>
+If a document conversion is realized via an insecure connection, it is possible to specify a SSLContext to secure the connection between conversion server and client.
+</p>
+
+<p>
+The standalone implementations of server and client converters can use the <code>SSLContext.getDefault()</code> instance for establishing a connection by setting the 
+<code>-ssl</code> parameter on startup. The default trust store and key store configuration can be adjusted by setting <code>javax.net.ssl.*</code> system properties 
+when running a standalone application from the console. The allowed encryption algorithms can be adjusted by setting <code>https.protocols property</code>.
+</p>
+
+<h3>Aggregating converter</h3>
+
+<p>
+Additionally to the <code>LocalConverter</code> and the <code>RemoteConverter</code>, documents4j extends the <code>IConverter</code> API by <code>IAggregatingConverter</code>
+which allows to delegate conversions to a collection of underlying converters. This interface is implemented by the <code>AggregationConverter</code> class.
+</p>
+
+<p>
+Using this extension serves three main purposes:
+  <ul>
+    <li>
+      It allows for the aggregation of several <code>IConverter</code>s to achieve a load balancing for multiple conversions. By default, an <code>AggregatingConverter</code>
+	  applies a round robin strategy. A custom strategy can be implemented as an <code>ISelectionStrategy</code>.
+    </li>
+    <li>
+	  Using the methods of the <code>IAggregatingConverter</code> interface, it is possible to register or remove aggregated <code>IConverters</code> after the creation of the 
+	  <code>AggregatingConverter</code>. This way, it is for example possible to migrate to another conversion server without restarting an application or to restart an 
+	  inoperative local converter.
+	</li>
+    <li>
+	  It allows to expose multiple converters that support different conversion formats by a single instance of <code>IConverter</code>.
+	</li>
+  </ul>
+</p>
+	
+<p>	
+An <code>AggregatingConverter</code> is created using a similar builder as when creating a <code>LocalConverter</code> or <code>RemoteConverter</code> which allows to specify the 
+converter's behavior:
+</p>
+
+<pre class="prettyprint">
+IConverter first = ... , second = ... ;
+
+IConverterFailureCallback converterFailureCallback = ... ;
+ISelectionStrategy selectionStrategy = ... ;
+
+IAggregatingConverter converter = AggregatingConverter.builder()
+                                      .aggregates(first, second)
+                                      .selectionStrategy(selectionStrategy)
+                                      .callback(converterFailureCallback)
+                                      .build();
+</pre>									  
+
+<p>
+An <code>AggregatingConverter</code> cannot generally guarantee the success of an individual conversion if an aggregated <code>IConverter</code> becomes inoperative during a conversion process. 
+The aggregating converter does however eventually discover a converter' inaccessibility and removes it from circulation. For being notified of such events, it is possible to register a delegate 
+as an <code>IConverterFailureCallback</code>. It is also possible to request regular health checks when creating a converter. Doing so, inoperative converters are checked for their state and 
+removed on failure in fixed time intervals.
+</p>
+
 <h3>Exception hierarchy</h3>
 
 <p>
