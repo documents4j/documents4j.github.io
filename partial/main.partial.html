@@ -318,8 +318,9 @@ If a document conversion is realized via an insecure connection, it is possible 
 
 <p>
 The standalone implementations of server and client converters can use the <code>SSLContext.getDefault()</code> instance for establishing a connection by setting the 
-<code>-ssl</code> parameter on startup. The default trust store and key store configuration can be adjusted by setting <code>javax.net.ssl.*</code> system properties 
-when running a standalone application from the console. The allowed encryption algorithms can be adjusted by setting <code>https.protocols property</code>.
+<code>-ssl</code> parameter on startup. The <a href="http://docs.oracle.com/javase/8/docs/technotes/guides/security/jsse/JSSERefGuide.html#InstallationAndCustomization">
+	default trust store and key store configuration</a> can be adjusted by setting <code>javax.net.ssl.*</code> system properties when running a standalone 
+	application from the console. The allowed encryption algorithms can be adjusted by setting <code>https.protocols property</code>.
 </p>
 
 <h3>Aggregating converter</h3>
