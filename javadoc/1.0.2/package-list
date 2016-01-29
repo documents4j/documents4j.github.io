@@ -1,0 +1,12 @@
+com.documents4j.api
+com.documents4j.builder
+com.documents4j.conversion
+com.documents4j.conversion.msoffice
+com.documents4j.demo
+com.documents4j.job
+com.documents4j.standalone
+com.documents4j.throwables
+com.documents4j.util
+com.documents4j.ws
+com.documents4j.ws.application
+com.documents4j.ws.endpoint

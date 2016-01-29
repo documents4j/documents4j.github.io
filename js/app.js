@@ -5,7 +5,7 @@ angular.module('documents4j', ['ngRoute', 'ui.bootstrap', 'duScroll'])
     .constant('repository', {
         groupId: 'com.documents4j',
         artifactId: 'documents4j',
-        version: '1.0.1'
+        version: '1.0.2'
     })
 
     .config(function ($routeProvider) {
