@@ -313,16 +313,48 @@ java -jar documents4j-client-standalone-shaded.jar http://localhost:9998
 <h4>Encryption</h4>
 
 <p>
-If a document conversion is realized via an insecure connection, it is possible to specify a SSLContext to secure the connection between conversion server and client.
+    It is possible to use a SSL connection between the client and server by specifying a <code>SSLContext</code> in the server.
 </p>
 
 <p>
-The standalone implementations of server and client converters can use the <code>SSLContext.getDefault()</code> instance for establishing a connection by setting the 
-<code>-ssl</code> parameter on startup. The <a href="http://docs.oracle.com/javase/8/docs/technotes/guides/security/jsse/JSSERefGuide.html#InstallationAndCustomization">
+    The standalone implementations of server and client converters are capable of using <code>SSLContext.getDefault()</code> for establishing a connection 
+    by setting the <code>-ssl</code> parameter on startup. The 
+    <a href="http://docs.oracle.com/javase/8/docs/technotes/guides/security/jsse/JSSERefGuide.html#InstallationAndCustomization">
 	default trust store and key store configuration</a> can be adjusted by setting <code>javax.net.ssl.*</code> system properties when running a standalone 
-	application from the console. The allowed encryption algorithms can be adjusted by setting <code>https.protocols property</code>.
+	application from the console. The allowed encryption algorithms can be adjusted by setting the <code>https.protocols</code> property.
 </p>
 
+<p>
+    To run the documents4j standalone server with SSL, the server can be set up as following:
+</p>
+    
+<ol>
+    <li>
+        Import your certificate into a keystore. <code>keytool</code> does not support importing certificates directly, therefore, you have 
+        to bundle them first using <code>openssl</code>:
+        <pre class="prettyprint">
+openssl pkcs12 -export -in /path/to/your/cert.crt -inkey /path/to/your/cert.key -name serverCert -out /tmp/keystore-PKCS-12.p12 -password pass:yourPassword
+keytool -importkeystore -noprompt -deststorepass yourPassword -srcstorepass yourPassword -destkeystore /path/to/your/keystore -srckeystore /tmp/keystore-PKCS-12.p12
+        </pre>
+    </li>
+    <li>
+        Afterwards, run the server with the given key store:
+        <pre class="prettyprint">
+java -jar documents4j-client-standalone-&lt;VERSION&gt;-shaded.jar https://0.0.0.0:8443 -ssl -Djavax.net.ssl.keyStore=/path/to/your/keystore -Djavax.net.ssl.keyStorePassword=yourPassword
+        </pre>
+    </li>
+</ol>
+
+<p>
+    A password such as <code>yourPassword</code> can be any chosen freely but is required.
+</p>
+
+<h3>Authentication</h3>
+
+<p>
+    The server can be started with basic authentication support with the command line option <code>-auth user:pass</code>.
+</p>
+    
 <h3>Aggregating converter</h3>
 
 <p>
@@ -436,7 +468,7 @@ removed on failure in fixed time intervals.
     different logging levels will determine the following events to be logged:
 </p>
 
-<dl  class="dl-horizontal padded">
+<dl class="dl-horizontal padded">
     <dt>trace</dt>
     <dd>
         On this level, all concurrent code will log the acquisition and release of monitors.
@@ -461,8 +493,24 @@ removed on failure in fixed time intervals.
         would cause a logging event on this level. Normally, such events are accompanied by an exception being thrown.
     </dd>
 </dl>
+    
+<h4>Monitoring</h4>
 
-<h3>Efficiency considerations</h3>
+<p>
+    documents4j registers two monitoring endpoints:
+</p>
+    
+<ul>
+    <li>Health endpoint under <code>/health</code> returning <i>200 OK</i> if the converter server is operational and <i>500 Internal 
+        Server Error</i> otherwise.</li>
+    <li>Running endpoint under <code>/running</code> returning always <i>200 OK</i>.</li>
+</ul>
+
+<p>
+    Both endpoints are always unprotected, even if the documents4j runs with basic authentication.
+</p>
+
+<h4>Efficiency considerations</h4>
 
 <h4>Input and target description</h4>
 
@@ -522,6 +570,29 @@ removed on failure in fixed time intervals.
         security threats to the machine that runs MS Office.
     </li>
 </ol>
+
+<p>
+    If you are experiencing requests jammed by a MS Office window reporting stating that some previous conversion failed, you can use MS bat 
+    script for looking those windows and close them over Windows' task scheduler. First create a .bat file with these commands 
+    and add it as a new task to run every minute:
+</p>
+    
+<pre class="prettyprint">
+taskkill /F /FI "WindowTitle eq Microsoft Word*"
+taskkill /F /FI "WindowTitle eq Microsoft Office*"
+</pre>
+
+<p>
+    For those that are experiencing multiples instances of msword and wsscript on task manager, all of them as zombies, you can use MS bat 
+    script to kill them by script over Windows' task scheduler. First create a <i>.bat</i> file with these commands, then, add it to new task 
+    to run every day at 6AM (for instance). Attention: current conversions will fail when this script been triggered, therefore, choose an 
+    idle time for the script application:
+</p>
+    
+<pre class="prettyprint">
+taskkill /f /t /im wscript.exe
+taskkill /f /t /im winword.exe
+</pre>
 
 <h3>Getting documents4j</h3>
 
