@@ -5,7 +5,7 @@ angular.module('documents4j', ['ngRoute', 'ui.bootstrap', 'duScroll'])
     .constant('repository', {
         groupId: 'com.documents4j',
         artifactId: 'documents4j',
-        version: '1.1.1'
+        version: 'LATEST'
     })
 
     .config(function ($routeProvider) {
@@ -30,11 +30,11 @@ angular.module('documents4j', ['ngRoute', 'ui.bootstrap', 'duScroll'])
         };
     })
 
-    .controller('menuController', function ($scope, $location, $rootScope, scroller, repository) {
+    .controller('menuController', function ($scope, $location, $rootScope, scroller) {
         $scope.menuItems = [
             {name: 'Use', target: '#/'},
             {name: 'Develop', target: '#/develop'},
-            {name: 'API', target: 'javadoc/' + repository.version + '/index.html'}
+            {name: 'API', target: 'https://javadoc.io/doc/com.documents4j/documents4j-api'}
         ];
         $scope.activeClass = function (current) {
             return current.target === '#' + ($location.path() || '/') ? 'active' : '';
