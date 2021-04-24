@@ -205,7 +205,15 @@ IConverter converter = LocalConverter.builder()
     the <i>com.documents4j/documents4j-transformer-msoffice-word</i> Maven module and the MS Excel bridge by the
     <i>com.documents4j/documents4j-transformer-msoffice-excel</i> module.
 </p>
+	
+<h4>Microsoft PowerPoint converter</h4>
 
+<p>
+    The MS PowerPoint converter is represented by a <code>MicrosoftPowerPointBridge</code> instance. Unlike the bridges for 
+    Word and Excel, the PowerPoint bridge needs explicit activation. This is due to PowerPoint's requirement to run in the 
+    foreground which opens PowerPoint on the executing machine which can cause problems in some environments.
+</p>
+	
 <h4>Give it a try</h4>
 
 <p>
